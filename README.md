@@ -1,4 +1,4 @@
-# MN Tech Launchpad - Landing Page Profissional
+# MNTecnologia - Landing Page Profissional
 
 ## 🚀 Sobre o Projeto
 
@@ -54,8 +54,8 @@ Landing page moderna e profissional para empresa de marketing digital e desenvol
 ### Instalação
 ```bash
 # Clone o repositório
-git clone <repository-url>
-cd mn-tech-launchpad
+git clone https://github.com/OMenez444/MNTecnologia.git
+cd MNTecnologia
 
 # Instale as dependências
 npm install
@@ -194,9 +194,9 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 ## 📞 Suporte
 
 Para suporte ou dúvidas:
-- Email: contato@mn-tech-launchpad.com
-- LinkedIn: [MN Tech Launchpad](https://linkedin.com/company/mn-tech-launchpad)
+- Email: mntecnologia@outlook.com.br
+- LinkedIn: [M&N Tecnologia](https://linkedin.com/company/mn-tech-launchpad)
 
 ---
 
-**Desenvolvido com ❤️ pela equipe MN Tech Launchpad**
+**Desenvolvido com ❤️ pela equipe M&N Tecnologia**
