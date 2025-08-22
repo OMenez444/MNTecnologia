@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>M&N Tecnologia - Desenvolvimento Web, SaaS & Marketing Digital</title>
+    
+                        <!-- Favicon e Ícones do Site - Ícones Oficiais M&N -->
+                    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=7" />
+                    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=7" />
+                    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=7" />
+                    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=7" />
+                    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png?v=7" />
+                    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png?v=7" />
+                    <link rel="manifest" href="/site.webmanifest?v=7" />
+    
+    <!-- Meta Tags Básicas -->
+    <meta name="description" content="Startup especializada em marketing digital, desenvolvimento web, SaaS e ferramentas de gestão. Transforme seu negócio com tráfego pago, SEO e soluções tecnológicas inovadoras." />
+    <meta name="author" content="M&N Tecnologia" />
+    <meta name="theme-color" content="#10B981" />
+    
+    <!-- Preconnect para performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+    
+                        <!-- Script AGGRESSIVO para forçar reload do favicon -->
+                    <script>
+                      // SOLUÇÃO AGGRESSIVA para forçar o favicon
+                      (function() {
+                        const timestamp = Date.now();
+                        
+                        // Função para forçar reload de todos os favicons
+                        function forceFaviconReload() {
+                          const allFavicons = document.querySelectorAll('link[rel*="icon"]');
+                          allFavicons.forEach(link => {
+                            const baseUrl = link.href.split('?')[0];
+                            link.href = baseUrl + '?v=' + timestamp + '&force=' + Math.random();
+                          });
+                          
+                          // Remove e recria o primeiro favicon para forçar
+                          const firstFavicon = document.querySelector('link[rel="icon"]');
+                          if (firstFavicon) {
+                            const newFavicon = document.createElement('link');
+                            newFavicon.rel = 'icon';
+                            newFavicon.type = 'image/x-icon';
+                            newFavicon.href = '/favicon.ico?v=' + timestamp + '&force=' + Math.random();
+                            document.head.removeChild(firstFavicon);
+                            document.head.appendChild(newFavicon);
+                          }
+                        }
+                        
+                        // Executa imediatamente
+                        forceFaviconReload();
+                        
+                        // Executa após DOM carregar
+                        if (document.readyState === 'loading') {
+                          document.addEventListener('DOMContentLoaded', forceFaviconReload);
+                        } else {
+                          forceFaviconReload();
+                        }
+                        
+                        // Executa após um delay
+                        setTimeout(forceFaviconReload, 100);
+                        setTimeout(forceFaviconReload, 500);
+                        setTimeout(forceFaviconReload, 1000);
+                      })();
+                    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mn-tech-launchpad.com/sitemap.xml
+
+# Crawl-delay para ser respeitoso com o servidor
+Crawl-delay: 1
+
+# Permitir indexação de todas as páginas
+Disallow:
+
+# Permitir acesso a recursos estáticos
+Allow: /assets/
+Allow: /images/
+Allow: /css/
+Allow: /js/

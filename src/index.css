@@ -1,0 +1,476 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Força o modo escuro como padrão */
+    color-scheme: dark;
+    
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 142 76% 46%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 142 32% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 142 32% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 142 32% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 142 32% 17.5%;
+    --input: 142 32% 17.5%;
+    --ring: 142 76% 46%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 142 76% 36%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 142 76% 36%;
+
+    /* Brand gradients - Modo escuro como padrão */
+    --gradient-primary: linear-gradient(135deg, hsl(142 76% 46%) 0%, hsl(142 76% 56%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(142 76% 46%) 0%, hsl(142 76% 66%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(142 76% 8%) 50%, hsl(142 76% 12%) 100%);
+    
+    /* Shadows - Ajustando para modo escuro */
+    --shadow-glow: 0 20px 40px -12px hsl(142 76% 46% / 0.25);
+    --shadow-card: 0 4px 6px -1px hsl(142 76% 46% / 0.1);
+    
+    /* Animation */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.5rem;
+  }
+
+  /* Modo claro (quando explicitamente selecionado) */
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 215 25% 27%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+
+    /* Mudando de azul para verde escuro */
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 142 32% 91%;
+    --secondary-foreground: 142 76% 36%;
+
+    --muted: 142 32% 91%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Mudando de roxo para verde médio */
+    --accent: 142 76% 46%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 142 32% 91%;
+    --input: 142 32% 91%;
+    --ring: 142 76% 36%;
+
+    /* Brand gradients - Modo claro */
+    --gradient-primary: linear-gradient(135deg, hsl(142 76% 36%) 0%, hsl(142 76% 46%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(142 76% 36%) 0%, hsl(142 76% 56%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(142 76% 98%) 0%, hsl(142 76% 95%) 50%, hsl(142 76% 92%) 100%);
+    
+    /* Shadows - Modo claro */
+    --shadow-glow: 0 20px 40px -12px hsl(142 76% 36% / 0.25);
+    --shadow-card: 0 4px 6px -1px hsl(142 76% 36% / 0.1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 142 76% 36%;
+  }
+
+  /* Modo escuro (padrão) */
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 142 76% 46%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 142 32% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 142 32% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 142 32% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 142 32% 17.5%;
+    --input: 142 32% 17.5%;
+    --ring: 142 76% 46%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 142 76% 36%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 142 76% 36%;
+
+    /* Brand gradients - Modo escuro */
+    --gradient-primary: linear-gradient(135deg, hsl(142 76% 46%) 0%, hsl(142 76% 56%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(142 76% 46%) 0%, hsl(142 76% 66%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(142 76% 8%) 50%, hsl(142 76% 12%) 100%);
+    
+    /* Shadows - Modo escuro */
+    --shadow-glow: 0 20px 40px -12px hsl(142 76% 46% / 0.25);
+    --shadow-card: 0 4px 6px -1px hsl(142 76% 46% / 0.1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    /* Força o modo escuro como padrão */
+    color-scheme: dark;
+  }
+
+  /* Aplica o tema escuro por padrão */
+  html {
+    color-scheme: dark;
+  }
+
+  /* Skip Links para Acessibilidade */
+  .skip-links {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    z-index: 100;
+  }
+
+  .skip-links:focus-within {
+    top: 6px;
+  }
+
+  .skip-link {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-right: 8px;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .skip-link:hover,
+  .skip-link:focus {
+    background: hsl(var(--primary) / 0.9);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px hsl(var(--primary) / 0.3);
+  }
+
+  /* Screen Reader Only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Focus Styles */
+  .focus-visible:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+
+  /* High Contrast Mode Support */
+  @media (prefers-contrast: high) {
+    .bg-primary {
+      background-color: hsl(var(--primary) / 0.9) !important;
+    }
+    
+    .text-primary {
+      color: hsl(var(--primary-foreground)) !important;
+    }
+  }
+
+  /* Reduced Motion Support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* WhatsApp Floating Button Styles */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 50;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1) translateY(-2px);
+  }
+
+  .whatsapp-float:active {
+    transform: scale(0.95);
+  }
+
+  /* WhatsApp Button Pulse Animation */
+  @keyframes whatsapp-pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
+  }
+
+  .whatsapp-pulse {
+    animation: whatsapp-pulse 2s infinite;
+  }
+
+  /* WhatsApp Status Indicator */
+  .whatsapp-status {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+  }
+
+  .whatsapp-status.online {
+    background-color: #10b981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+  }
+
+  .whatsapp-status.offline {
+    background-color: #9ca3af;
+    box-shadow: 0 0 0 2px rgba(156, 163, 175, 0.3);
+  }
+
+  /* WhatsApp Tooltip */
+  .whatsapp-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    right: 0;
+    background: #1f2937;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  .whatsapp-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 16px;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #1f2937;
+  }
+
+  .whatsapp-float:hover .whatsapp-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Contact Form Animations */
+  .contact-form-enter {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .contact-form-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.5s ease;
+  }
+
+  .contact-form-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .contact-form-exit-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+  }
+
+  /* WhatsApp Card Hover Effects */
+  .whatsapp-card {
+    transition: all 0.3s ease;
+  }
+
+  .whatsapp-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
+  }
+
+  /* Form Input Focus Effects */
+  .form-input-focus {
+    transition: all 0.3s ease;
+  }
+
+  .form-input-focus:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(34, 197, 94, 0.15);
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  /* Acessibilidade */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  /* WhatsApp Utilities */
+  .whatsapp-green {
+    background-color: #22c55e;
+  }
+
+  .whatsapp-green-hover {
+    background-color: #16a34a;
+  }
+
+  .whatsapp-text {
+    color: #22c55e;
+  }
+
+  .whatsapp-border {
+    border-color: #22c55e;
+  }
+
+  .whatsapp-shadow {
+    box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+  }
+
+  /* Novas classes para o tema verde */
+  .green-primary {
+    background-color: hsl(142 76% 36%);
+  }
+
+  .green-primary-light {
+    background-color: hsl(142 76% 46%);
+  }
+
+  .green-primary-dark {
+    background-color: hsl(142 76% 26%);
+  }
+
+  .green-accent {
+    background-color: hsl(142 76% 56%);
+  }
+
+  .green-text {
+    color: hsl(142 76% 36%);
+  }
+
+  .green-text-light {
+    color: hsl(142 76% 46%);
+  }
+
+  .green-border {
+    border-color: hsl(142 76% 36%);
+  }
+
+  .green-shadow {
+    box-shadow: 0 4px 20px hsl(142 76% 36% / 0.25);
+  }
+}
