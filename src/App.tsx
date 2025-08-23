@@ -7,6 +7,8 @@ import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { usePerformance } from "@/hooks/usePerformance";
 import { useAccessibility } from "@/hooks/useAccessibility";
+import GoogleAds from "@/components/GoogleAds";
+import { googleAdsConfig } from "@/config/googleAds";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -26,6 +28,10 @@ const App = () => (
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <AppWrapper />
+          <GoogleAds 
+            conversionId={googleAdsConfig.conversionId}
+            conversionLabel={googleAdsConfig.conversionLabel}
+          />
           <Toaster />
           <Sonner />
           <BrowserRouter>

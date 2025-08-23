@@ -2,9 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
+import { useGoogleAds } from "@/hooks/useGoogleAds";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { trackContactButton, trackStartNowButton } = useGoogleAds();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -64,14 +66,20 @@ const Header = () => {
           
           <Button 
             variant="outline" 
-            onClick={() => scrollToSection('contact')}
+            onClick={() => {
+              trackContactButton();
+              scrollToSection('contact');
+            }}
             className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition-all duration-300"
           >
             Fale Conosco
           </Button>
           <Button 
             variant="hero" 
-            onClick={() => scrollToSection('contact')}
+            onClick={() => {
+              trackStartNowButton();
+              scrollToSection('contact');
+            }}
             className="bg-green-600 hover:bg-green-700 text-white border-0 shadow-green-glow hover:shadow-green-glow/80 transition-all duration-300"
           >
             Começar Agora
@@ -124,14 +132,20 @@ const Header = () => {
               <div className="flex flex-col space-y-2 pt-4">
                 <Button 
                   variant="outline" 
-                  onClick={() => scrollToSection('contact')}
+                  onClick={() => {
+                    trackContactButton();
+                    scrollToSection('contact');
+                  }}
                   className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition-all duration-300"
                 >
                   Fale Conosco
                 </Button>
                 <Button 
                   variant="hero" 
-                  onClick={() => scrollToSection('contact')}
+                  onClick={() => {
+                    trackStartNowButton();
+                    scrollToSection('contact');
+                  }}
                   className="bg-green-600 hover:bg-green-700 text-white border-0 shadow-green-glow hover:shadow-green-glow/80 transition-all duration-300"
                 >
                   Começar Agora

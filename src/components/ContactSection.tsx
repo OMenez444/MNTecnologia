@@ -14,8 +14,10 @@ import {
   Zap,
   CheckCircle
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useGoogleAds } from "@/hooks/useGoogleAds";
+import { useLeadQuality } from "@/hooks/useLeadQuality";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -27,6 +29,19 @@ const ContactSection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const { trackContactForm, trackCustomEvent } = useGoogleAds();
+  const { 
+    startTracking, 
+    trackFormFocus, 
+    trackButtonClick: trackQualityButtonClick,
+    trackSectionView 
+  } = useLeadQuality();
+
+  // Iniciar rastreamento de qualidade quando o componente for montado
+  useEffect(() => {
+    startTracking();
+    trackSectionView('contact_section');
+  }, [startTracking, trackSectionView]);
 
   // Configurações do WhatsApp
   const whatsappConfig = {
@@ -53,14 +68,12 @@ const ContactSection = () => {
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${whatsappConfig.phone}?text=${encodedMessage}`;
     
-    // Tracking para Google Analytics
-    if (window.gtag) {
-      window.gtag('event', 'whatsapp_click', {
-        event_category: 'contact',
-        event_label: fromForm ? 'form_whatsapp' : 'floating_whatsapp',
-        value: 1
-      });
-    }
+    // Tracking para Google Ads
+    trackCustomEvent('whatsapp_click', {
+      event_category: 'contact',
+      event_label: fromForm ? 'form_whatsapp' : 'floating_whatsapp',
+      value: 1
+    });
 
     // Abre WhatsApp em nova aba
     window.open(whatsappUrl, '_blank');
@@ -102,20 +115,34 @@ Gostaria de receber uma proposta personalizada.`;
     }));
   };
 
+  // Rastrear foco nos campos do formulário
+  const handleInputFocus = (fieldName: string) => {
+    trackFormFocus(fieldName);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
     // Simula envio do formulário
     setTimeout(() => {
-      // Tracking para Google Analytics
-      if (window.gtag) {
-        window.gtag('event', 'form_submit', {
-          event_category: 'contact',
-          event_label: 'contact_form',
-          value: 1
-        });
-      }
+      // Tracking para Google Ads
+      trackContactForm();
+      
+      // Tracking adicional para eventos personalizados
+      trackCustomEvent('contact_form_submitted', {
+        event_category: 'contact',
+        event_label: 'contact_form',
+        value: 1,
+        form_fields: Object.keys(formData).filter(key => formData[key as keyof typeof formData]).length
+      });
+
+      // Rastrear qualidade do lead
+      trackCustomEvent('lead_quality_contact_form', {
+        form_type: 'contact',
+        form_completion: '100%',
+        lead_quality: 'high'
+      });
 
       toast({
         title: "Mensagem enviada!",
@@ -210,6 +237,7 @@ Gostaria de receber uma proposta personalizada.`;
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
+                      onFocus={() => handleInputFocus('name')}
                       placeholder="Seu nome completo"
                       required
                       className="focus-ring form-input-focus"
@@ -223,6 +251,7 @@ Gostaria de receber uma proposta personalizada.`;
                       type="email"
                       value={formData.email}
                       onChange={handleInputChange}
+                      onFocus={() => handleInputFocus('email')}
                       placeholder="seu@email.com"
                       required
                       className="focus-ring form-input-focus"
@@ -238,6 +267,7 @@ Gostaria de receber uma proposta personalizada.`;
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
+                      onFocus={() => handleInputFocus('phone')}
                       placeholder="(64) 9 9666-6165"
                       className="focus-ring form-input-focus"
                     />
@@ -249,6 +279,7 @@ Gostaria de receber uma proposta personalizada.`;
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
+                      onFocus={() => handleInputFocus('company')}
                       placeholder="Nome da sua empresa"
                       className="focus-ring form-input-focus"
                     />
@@ -262,6 +293,7 @@ Gostaria de receber uma proposta personalizada.`;
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
+                    onFocus={() => handleInputFocus('message')}
                     placeholder="Conte-nos sobre seu projeto e seus objetivos..."
                     rows={5}
                     required
@@ -277,6 +309,7 @@ Gostaria de receber uma proposta personalizada.`;
                     size="lg" 
                     className="w-full transition-all duration-300 hover:scale-105"
                     disabled={isSubmitting}
+                    onClick={() => trackQualityButtonClick('submit_button')}
                   >
                     {isSubmitting ? (
                       <>
@@ -296,7 +329,10 @@ Gostaria de receber uma proposta personalizada.`;
                     variant="outline" 
                     size="lg" 
                     className="w-full whatsapp-border whatsapp-text hover:whatsapp-green hover:text-white transition-all duration-300 hover:scale-105"
-                    onClick={openWhatsAppWithFormData}
+                    onClick={() => {
+                      trackQualityButtonClick('whatsapp_button');
+                      openWhatsAppWithFormData();
+                    }}
                   >
                     <MessageSquare className="w-5 h-5 mr-2" />
                     WhatsApp
