@@ -25,9 +25,9 @@ const SEO = ({
     "url": url,
     "logo": `${url}/logo.svg`,
     "sameAs": [
-      "https://linkedin.com/company/mn-tech-launchpad",
-      "https://facebook.com/mntechlaunchpad",
-      "https://instagram.com/mntechlaunchpad"
+      "https://linkedin.com/company/mntecnologia",
+      "https://facebook.com/mntecnologia",
+      "https://www.instagram.com/mn.tecnologia_iub"
     ],
     "contactPoint": {
       "@type": "ContactPoint",

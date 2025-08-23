@@ -31,21 +31,21 @@ const FooterSection = () => {
   const socialLinks = [
     { 
       icon: <Facebook size={20} />, 
-      href: "https://facebook.com/mntechlaunchpad", 
+      href: "https://facebook.com/mntecnologia", 
       name: "Facebook",
       color: "hover:bg-blue-600",
       tooltip: "Siga-nos no Facebook"
     },
     { 
       icon: <Instagram size={20} />, 
-      href: "https://instagram.com/mntechlaunchpad", 
+      href: "https://www.instagram.com/mn.tecnologia_iub", 
       name: "Instagram",
       color: "hover:bg-pink-600",
       tooltip: "Siga-nos no Instagram"
     },
     { 
       icon: <Linkedin size={20} />, 
-      href: "https://linkedin.com/company/mn-tech-launchpad", 
+      href: "https://linkedin.com/company/mntecnologia", 
       name: "LinkedIn",
       color: "hover:bg-blue-700",
       tooltip: "Conecte-se no LinkedIn"
