@@ -103,8 +103,8 @@ const FooterSection = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone size={16} className="text-green-400" />
-                <a href="tel:+5564996666165" className="text-background/80 hover:text-background transition-smooth">
-                  (64) 9 9666-6165
+                                  <a href="tel:+5564992780424" className="text-background/80 hover:text-background transition-smooth">
+                  +55 (64) 99278-0424
                 </a>
               </div>
               <div className="flex items-center space-x-3">

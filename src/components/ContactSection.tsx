@@ -45,7 +45,7 @@ const ContactSection = () => {
 
   // Configurações do WhatsApp
   const whatsappConfig = {
-    phone: "5564996666165", // Número do WhatsApp (formato internacional)
+    phone: "5564992780424", // Número do WhatsApp (formato internacional)
     defaultMessage: "Olá! Gostaria de saber mais sobre os serviços de marketing digital e desenvolvimento web.",
     businessHours: {
       start: 9,
@@ -170,8 +170,8 @@ Gostaria de receber uma proposta personalizada.`;
     {
       icon: <Phone className="w-6 h-6 text-primary" />,
       title: "Telefone",
-      content: "(64) 9 9666-6165",
-      link: "tel:+5564996666165"
+      content: "+55 (64) 99278-0424",
+      link: "tel:+5564992780424"
     },
     {
       icon: <MapPin className="w-6 h-6 text-primary" />,
@@ -268,7 +268,7 @@ Gostaria de receber uma proposta personalizada.`;
                       value={formData.phone}
                       onChange={handleInputChange}
                       onFocus={() => handleInputFocus('phone')}
-                      placeholder="(64) 9 9666-6165"
+                      placeholder="+55 (64) 99278-0424"
                       className="focus-ring form-input-focus"
                     />
                   </div>

@@ -31,7 +31,7 @@ const SEO = ({
     ],
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+55-64-99666-6165",
+              "telephone": "+55-64-99278-0424",
       "contactType": "customer service",
       "areaServed": "BR"
     },
